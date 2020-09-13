@@ -140,10 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TaskHelper.cpp" />
+    <ClCompile Include="MatrixMaster.cpp" />
+    <ClCompile Include="SupportStuff.cpp" />
+    <ClCompile Include="TaskSolveFunc.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TaskHelper.h" />
+    <ClInclude Include="CheckData.h" />
+    <ClInclude Include="MatrixMaster.h" />
+    <ClInclude Include="SupportStuff.h" />
+    <ClInclude Include="TaskSolverFunc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

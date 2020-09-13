@@ -1,44 +1,31 @@
-#include <iostream>
-#include "TaskHelper.h"
+#include "SupportStuff.h"
+#include "MatrixMaster.h"
+#include "TaskSolverFunc.h"
+#include "CheckData.h"
 
 using namespace std;
 
-void task_1() {
+int main(){
 	bool answer = true;
-	do {
-		double large = 0, small = 0, x = 0, y = 0;
+	do{
+		Author myself = Author( "Labrotary works", "Denisov Kirill", "IVBO-02-19", "12" );
+		cout<< myself.introduce();
+		/*
+		Matrix matr = { {1,2,4},{5,7,2},{5,9,9},{12,5,9} };
+		MatrixMaster::showArray(matr);
+		MatrixMaster::deleteColumn(matr, 2);
+		MatrixMaster::showArray(matr);
+		*/
 
-		cout << "Get radius of cirsles" << endl;
-		cout << "The larger circle> ";
-		large = CheckData<double>::getPosDigit();
-		cout << "The smaller circle> ";
-		small = CheckData<double>::getPosDigit();
-		cout << "Get x coordinate> ";
-		x = CheckData<double>::getDigit();
-		cout << "Get y coordinate> ";
-		y = CheckData<double>::getDigit();
-		Point point = { x,y };
+		std::function<void()> execTask = myself.choiseTask();
+		execTask();
+		
 
-		if (TaskSolver::task1(large, small, point))
-			cout << "The point IS INCLUDED in the area" << endl;
-		else
-			cout << "The point IS NOT INCLUDED in the area" << endl;
+		// task 12
 
 		cout << "Repeat the program? (y/n) > ";
 		answer = CheckData<void>::getYesNo();
 	} while (answer);
-}
-
-int main(){
-	Author myself = Author( "Labrotary work #1", "Denisov Kirill", "IVBO-02-19", "12" );
-	cout<< myself.introduce();
-	task_1();
-
-	// task 12
-
-	
-	
-	
 
 
 	return 0;
