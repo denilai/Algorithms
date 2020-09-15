@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EmailMaster.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatrixMaster.cpp" />
     <ClCompile Include="SupportStuff.cpp" />
@@ -146,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CheckData.h" />
+    <ClInclude Include="EmailMaster.h" />
     <ClInclude Include="MatrixMaster.h" />
     <ClInclude Include="SupportStuff.h" />
     <ClInclude Include="TaskSolverFunc.h" />

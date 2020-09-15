@@ -2,6 +2,7 @@
 #include "MatrixMaster.h"
 #include "TaskSolverFunc.h"
 #include "CheckData.h"
+#include "EmailMaster.h"
 
 using namespace std;
 
@@ -17,11 +18,15 @@ int main(){
 		MatrixMaster::showArray(matr);
 		*/
 
+		EmailAdress a ("gggd__@f@rww.cs..dg.sg.bc");
+		a.showStack();
+
+		cout << a.getStatus() << endl;
+
 		std::function<void()> execTask = myself.choiseTask();
 		execTask();
 		
 
-		// task 12
 
 		cout << "Repeat the program? (y/n) > ";
 		answer = CheckData<void>::getYesNo();

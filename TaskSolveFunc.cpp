@@ -32,3 +32,8 @@ void solveTask2() {
 		ans = MatrixMaster::findElem(array, maxElem);
 	}
 }
+
+
+void solveTask3() {
+
+}

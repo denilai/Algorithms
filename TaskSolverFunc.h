@@ -7,5 +7,6 @@
 
 void solveTask1();
 void solveTask2();
+void solveTask3();
 
 #endif
