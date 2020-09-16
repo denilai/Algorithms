@@ -3,22 +3,28 @@
 
 
 EmailAdress::EmailAdress(const std::string email) {
-	if (std::count_if(email.begin(), email.end(), [](char ch) {return (ch == '@'); }) > 1) {
+	setEmail(email);
+}
+
+void EmailAdress::setEmail(const std::string email) {
+	int countComAt = std::count_if(email.begin(), email.end(), [](char ch) {return (ch == '@'); });
+	int countDot = std::count_if(email.begin(), email.end(), [](char ch) {return (ch == '.'); });
+	if (countComAt > 1 || countDot ==0 || countComAt == 0) {
 		this->emStatus = INVALID;
 		this->email = "Invalid adress";
 		this->fqdn = new FQDN();
 	}
 	else {
 		int comAt = email.find('@');
-		this->email = email.substr(0,comAt);
-		this->fqdn = new FQDN(email.substr(comAt+1));
+		this->email = email.substr(0, comAt);
+		this->fqdn = new FQDN(email.substr(comAt + 1));
 		if (fqdn->checkStack() == INVALID)
 			this->emStatus = INVALID;
 	}
 }
 
 Status EmailAdress::FQDN::checkStack() {
-	std::stack<FQDN::DomainName> copy;
+	std::stack<FQDN::DomainName> copy = this->getStack();
 	while (!copy.empty()) {
 		if (copy.top().dName == "")
 			return INVALID;
@@ -36,9 +42,11 @@ EmailAdress::FQDN::FQDN() {}
 
 std::string EmailAdress::getStatus() {
 	if (this->emStatus == VALID)
-		return "Valid email adress\n";
-	else return "Invalid email adress\n";
+		return "Valid";
+	else return "Invalid";
 }
+
+
 void EmailAdress::showStack()
 {
 	std::stack<FQDN::DomainName> stack = fqdn->getStack();

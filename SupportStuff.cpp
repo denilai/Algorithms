@@ -14,21 +14,20 @@ std::string Author::introduce() {
 std::function<void()> Author::choiseTask()
 {
 	int x = 0;
-	std::cout << "Chose the task:" << std::endl;
+	std::cout << "\n\nChose the task:" << std::endl;
 	std::cout << " -- Task I - Problem with including a point in the area\n";
 	std::cout << " -- Task II - Delete column with maximal element in 2D matrix\n";
-	std::cout << "Print '1' or '2'> ";
-	int first = 1, last = 2;
-	x = CheckData<int>::getDigit();
-	while (!(first <= x && x <= last)) {
-		std::cout << "Chose variant in range [" << first << "," << last << "]!\n> ";
-		x = CheckData<int>::getDigit();
-	}
+	std::cout << " -- Task III - Check email adress status\n";
+	std::cout << "Print '1', '2' or '3'> ";
+	int first = 1, last = 3;
+	x = CheckData<int>::getDigit(first, last);
 	switch (x) {
 	case 1:
 		return solveTask1;
 	case 2:
 		return solveTask2;
+	case 3:
+		return solveTask3;
 	default:
 		std::cout << "Invalid input\n";
 	}

@@ -16,7 +16,7 @@ private:
 
 	//-----------------------------FIELDS---------------------------//
 	std::string email;
-	Status emStatus = INVALID;
+	Status emStatus;
 	std::string userName;
 	
 	class FQDN {
@@ -35,15 +35,13 @@ private:
 		FQDN(const std::string domainLine);
 	};
 
-	FQDN* fqdn = NULL;
-	
-	
-	
+	FQDN* fqdn = NULL;	
 	//--------------------------METHODS------------------------------//
 public:
 	EmailAdress(const std::string email);
 	std::string getStatus();
 	void showStack();
+	void setEmail(const std::string);
 };
 
 #endif

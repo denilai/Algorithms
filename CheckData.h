@@ -39,6 +39,29 @@ public:
 		}
 		return input;
 	}
+
+	static T getDigit(int& first, int& last) {
+		T input;
+		bool error;
+		std::cin >> input;
+		do {
+			error = false;
+			if (std::cin.fail()) {
+				std::cin.clear(); // то возвращаем cin в 'обычный' режим работы
+				std::cin.ignore(32767, '\n'); // и удаляем значения предыдущего ввода из входного буфера
+				std::cout << "Oops, that input is invalid.  Please try again.\n> ";
+				error = true;
+			}
+			if (!(input >= first && input <= last)) {
+				std::cout << "Oops, chose value in range [" << first << "," << last << "]. Please try egein.\n> ";
+				error = true;
+			}
+			if(error)
+				std::cin >> input;
+		} while (error);
+		return input;
+	}
+
 };
 
 #endif
