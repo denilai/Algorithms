@@ -3,7 +3,7 @@
 
 #include <string>
 #include <queue>
-#include<stack>
+#include <stack>
 #include <iostream>
 // FQDN - fully qualified domain name
 

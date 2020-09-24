@@ -3,10 +3,13 @@
 #include "TaskSolverFunc.h"
 #include "CheckData.h"
 #include "EmailMaster.h"
+#include <windows.h>
 
 using namespace std;
 
 int main(){
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
 	bool answer = true;
 	
 	Author myself = Author( "Labrotary works", "Denisov Kirill", "IVBO-02-19", "12" );

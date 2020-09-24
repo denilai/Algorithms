@@ -1,7 +1,7 @@
 #include "SupportStuff.h"
 #include "CheckData.h"
 #include "TaskSolverFunc.h"
-
+#include "MyBase.h"
 
 Author::Author(std::string work, std::string n, std::string gr, std::string var) : work(work), name(n), group(gr), variant(var) {}
 
@@ -15,12 +15,12 @@ std::function<void()> Author::choiseTask()
 {
 	int x = 0;
 	std::cout << "\n\nChose the task:" << std::endl;
-	std::cout << " -- Task I - Problem with including a point in the area\n";
-	std::cout << " -- Task II - Delete column with maximal element in 2D matrix\n";
+	std::cout << " -- Task I   - Problem with including a point in the area\n";
+	std::cout << " -- Task II  - Delete column with maximal element in 2D matrix\n";
 	std::cout << " -- Task III - Check email adress status\n";
-	std::cout << "Print '1', '2' or '3'> ";
-	int first = 1, last = 3;
-	x = CheckData<int>::getDigit(first, last);
+	std::cout << " -- Task IV  - Operation with file (profile form)\n";
+	std::cout << "Print '1', '2', '3' or '4'> ";
+	x = CheckData<int>::getDigit(1, 4);
 	switch (x) {
 	case 1:
 		return solveTask1;
@@ -28,6 +28,8 @@ std::function<void()> Author::choiseTask()
 		return solveTask2;
 	case 3:
 		return solveTask3;
+	case 4:
+		return solveTask4;
 	default:
 		std::cout << "Invalid input\n";
 	}
@@ -42,4 +44,6 @@ bool GeomMaster::areaChecker(double large, double small, Point& p) {
 		return 1;
 	else return 0;
 }
+
+
 

@@ -40,7 +40,7 @@ public:
 		return input;
 	}
 
-	static T getDigit(int& first, int& last) {
+	static T getDigit(int first, int last) {
 		T input;
 		bool error;
 		std::cin >> input;
@@ -53,7 +53,7 @@ public:
 				error = true;
 			}
 			if (!(input >= first && input <= last)) {
-				std::cout << "Oops, chose value in range [" << first << "," << last << "]. Please try egein.\n> ";
+				std::cout << "Oops, chose value in range [" << first << "," << last << "]. Please try again.\n> ";
 				error = true;
 			}
 			if(error)

@@ -139,16 +139,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Compare.cpp" />
     <ClCompile Include="EmailMaster.cpp" />
+    <ClCompile Include="MyBase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatrixMaster.cpp" />
+    <ClCompile Include="Person.cpp" />
     <ClCompile Include="SupportStuff.cpp" />
     <ClCompile Include="TaskSolveFunc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CheckData.h" />
     <ClInclude Include="EmailMaster.h" />
+    <ClInclude Include="Compare.h" />
+    <ClInclude Include="MyBase.h" />
     <ClInclude Include="MatrixMaster.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="SupportStuff.h" />
     <ClInclude Include="TaskSolverFunc.h" />
   </ItemGroup>

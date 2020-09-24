@@ -1,6 +1,9 @@
 #include "TaskSolverFunc.h"
 #include "CheckData.h"
 #include "EmailMaster.h"
+#include "MyBase.h"
+
+
 
 void solveTask1() {
 	double large = 0, small = 0, x = 0, y = 0;
@@ -51,5 +54,120 @@ void solveTask3() {
 		else std::cout << "Your email is valid\n";
 		std::cout << "Try again ? (y or n) > ";
 		answer = CheckData<int>::getYesNo();
+	} while (answer);
+}
+
+void solveTask4() {
+	bool answer = false, task = true;
+	do {
+		// работа с файлами
+		std::string fileName, key;
+		int operation, findByField, sortByField;
+		bool direction;
+		std::vector<Person> found;
+		//std::cout << "Get name of file with person data > ";
+		//std::cin >> fileName;
+		fileName = "Persons.txt";
+	//	std::fstream file(fileName,std::ios::out);
+		MyBase myBase(fileName);
+		myBase.readFromFile();
+
+		std::cout << sizeof(MyBase) << "  " << sizeof(myBase);
+
+		do{
+			std::cout << "\n----------------------------------------------\n";
+			std::cout << "What would you like to do?\n";
+			std::cout << "1) Sort data base (selected field)\n";
+			std::cout << "2) Show item report\n";
+			std::cout << "3) Search for an item (selected key)\n";
+			std::cout << "4) Writing data to a binary file\n";
+			std::cout << "5) Reading a binary file\n";
+			std::cout << "6) Quit to main";
+			std::cout << "\n----------------------------------------------\n";
+			std::cout << "> ";
+			operation = CheckData<int>::getDigit(1, 6);
+			switch (operation)
+			{
+			case 1:
+				std::cout << "Select the field to sort by ->\n";
+				std::cout << "|| 1) Full Name || 2) Gender || 3) Birthdate || 4) INN ||\n> ";
+				sortByField = CheckData<int>::getDigit(1, 4);
+				std::cout << "Increase sort? (y/n)>\n";
+				direction = CheckData<int>::getYesNo();
+				switch (sortByField)
+				{
+				case 1:
+					myBase.sortBy(PersonField::FULL_NAME,direction);
+					break;
+				case 2:
+					myBase.sortBy(PersonField::GENDER, direction);
+					break;
+				case 3:
+					myBase.sortBy(PersonField::BIRTHDATE, direction);
+					break;
+				case 4:
+					myBase.sortBy(PersonField::INN, direction);
+					break;
+				default:
+					std::cout << "Not a case\n";
+					break;
+				}
+				break;
+			case 2:
+				myBase.showData();
+				break;
+			case 3:
+				std::cout << "Select the field to find by ->\n";
+				std::cout << "|| 1) Full Name || 2) Gender || 3) Birthdate || 4) INN ||\n> ";
+				findByField = CheckData<int>::getDigit(1, 4);
+				std::cout << "Enter the key (search request)\n> ";
+				std::cin >> key;
+				std::cout << "Search has started...\n";
+				switch (findByField)
+				{
+				case 1:
+					found = myBase.findBy(PersonField::FULL_NAME, key);
+					for (auto& pers : found) {
+						pers.showPerson();
+					}
+					break;
+				case 2:
+					found = myBase.findBy(PersonField::GENDER, key);
+					for (auto& pers : found) {
+						pers.showPerson();
+					}
+					break;
+				case 3:
+					found = myBase.findBy(PersonField::BIRTHDATE, key);
+					for (auto& pers : found) {
+						pers.showPerson();
+					}
+					break;
+				case 4:
+					found = myBase.findBy(PersonField::INN, key);
+					for (auto& pers : found) {
+						pers.showPerson();
+					}
+					break;
+				default:
+					std::cout << "Not a case\n";
+					break;
+				}
+				std::cout << "Search is over\n";
+			case 4:
+				myBase.writeToBinFile();
+				break;
+			case 5:
+				myBase.readFromBinFile();
+				break;
+			case 6:
+				std::cout << "One more operation? (y or n) > ";
+				task = CheckData<int>::getYesNo();
+			default:
+				break;
+			}
+		} while (task);
+		std::cout << "Try again? (y or n) > ";
+		task = CheckData<int>::getYesNo();
 	} while (answer);
 }
