@@ -43,11 +43,8 @@ std::vector<Person>MyBase::findBy(PersonField field, std::string arg)
 
 void MyBase::readFromBinFile() {
 	if (iBinFile.is_open()) {
-		for (auto person : persons) {
-			iBinFile.read((char*)&person.fullName, sizeof(person.fullName));
-			iBinFile.read((char*)&person.gender, sizeof(person.gender));
-			iBinFile.read((char*)&person.birthdate, sizeof(person.birthdate));
-			iBinFile.read((char*)&person.INN, sizeof(person.INN));
+		for (auto& person : persons) {
+			iBinFile.read((char*)&person, sizeof(Person));
 		}
 		//std::cout << std::endl << sizeof(this) << std::endl;
 		iBinFile.close();
@@ -57,11 +54,8 @@ void MyBase::readFromBinFile() {
 
 void MyBase::writeToBinFile() {
 	if (oBinFile.is_open()) {
-		for (auto person : persons) {
-			oBinFile.write((char*)&person.getFullName(), sizeof(person.getFullName()));
-			oBinFile.write((char*)&person.getGender(), sizeof(person.getGender()));
-			oBinFile.write((char*)&person.getBirthdate(), sizeof(person.getBirthdate()));
-			oBinFile.write((char*)&person.getINN(), sizeof(person.getINN()));
+		for (auto & person : persons) {
+			oBinFile.write((char*)&person, sizeof(Person));
 		}
 		oBinFile.close();
 	}

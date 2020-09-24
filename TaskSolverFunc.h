@@ -5,9 +5,9 @@
 #include "SupportStuff.h"
 
 
-void solveTask1();
-void solveTask2();
-void solveTask3();
-void solveTask4();
-
+bool solveTask1();
+bool solveTask2();
+bool solveTask3();
+bool solveTask4();
+bool exitFunc();
 #endif

@@ -21,11 +21,11 @@ int main(){
 	MatrixMaster::showArray(matr);
 	*/
 	do {
-		std::function<void()> execTask = myself.choiseTask();
-		execTask();
+		std::function<bool()> execTask = myself.choiseTask();
+		answer = execTask();
 		
-		cout << "Repeat the program? (y/n) > ";
-		answer = CheckData<void>::getYesNo();
+		//cout << "\nRepeat the program? (y/n) > ";
+		//answer = CheckData<void>::getYesNo();
 	} while (answer);
 
 

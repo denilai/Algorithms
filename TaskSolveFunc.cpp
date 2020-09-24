@@ -5,10 +5,12 @@
 
 
 
-void solveTask1() {
+bool solveTask1() {
 	double large = 0, small = 0, x = 0, y = 0;
 	bool answer = false;
 	do {
+		std::cout << "\n\tTASK #1\n";
+
 		std::cout << "Get radius of cirsles" << std::endl;
 		std::cout << "The larger circle> ";
 		large = CheckData<double>::getPosDigit();
@@ -27,9 +29,12 @@ void solveTask1() {
 		std::cout << "Try again ? (y or n) > ";
 		answer = CheckData<int>::getYesNo();
 	} while (answer);
+	return true;
 }
 
-void solveTask2() {
+bool solveTask2() {
+	std::cout << "\n\tTASK #2\n";
+
 	Matrix array = MatrixMaster::createMatrix();
 	MatrixMaster::showArray(array);
 	int maxElem = MatrixMaster::findMaxElem(array);
@@ -39,13 +44,15 @@ void solveTask2() {
 		MatrixMaster::showArray(array);
 		ans = MatrixMaster::findElem(array, maxElem);
 	}
+	return true;
 }
 
 
-void solveTask3() {
+bool solveTask3() {
 	std::string emailName;
 	bool answer = false;
 	do {
+		std::cout << "\n\tTASK #3\n";
 		std::cout << "\nGet your email adress > ";
 		std::cin >> emailName;
 		EmailAdress email(emailName);
@@ -55,11 +62,15 @@ void solveTask3() {
 		std::cout << "Try again ? (y or n) > ";
 		answer = CheckData<int>::getYesNo();
 	} while (answer);
+	return true;
 }
 
-void solveTask4() {
+
+
+bool solveTask4() {
 	bool answer = false, task = true;
 	do {
+		std::cout << "\n\tTASK #4\n";
 		// работа с файлами
 		std::string fileName, key;
 		int operation, findByField, sortByField;
@@ -72,7 +83,7 @@ void solveTask4() {
 		MyBase myBase(fileName);
 		myBase.readFromFile();
 
-		std::cout << sizeof(MyBase) << "  " << sizeof(myBase);
+		std::cout << "\n\t---Data copied from a file 'Person.txt'---\n";
 
 		do{
 			std::cout << "\n----------------------------------------------\n";
@@ -161,13 +172,18 @@ void solveTask4() {
 				myBase.readFromBinFile();
 				break;
 			case 6:
-				std::cout << "One more operation? (y or n) > ";
-				task = CheckData<int>::getYesNo();
+				task = false;
 			default:
 				break;
 			}
 		} while (task);
 		std::cout << "Try again? (y or n) > ";
-		task = CheckData<int>::getYesNo();
+		answer = CheckData<int>::getYesNo();
 	} while (answer);
+	return true;
+}
+
+bool exitFunc() {
+	std::cout << "\nExit program...\n";
+	return false;
 }

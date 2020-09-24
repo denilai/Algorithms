@@ -16,7 +16,7 @@ public:
 	// Представление
 	std::string introduce();
 
-	 std::function<void()> choiseTask();
+	 std::function<bool()> choiseTask();
 };
 
 struct Point {

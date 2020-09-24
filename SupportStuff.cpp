@@ -11,7 +11,7 @@ std::string Author::introduce() {
 	return intro;
 }
 
-std::function<void()> Author::choiseTask()
+std::function<bool()> Author::choiseTask()
 {
 	int x = 0;
 	std::cout << "\n\nChose the task:" << std::endl;
@@ -19,8 +19,9 @@ std::function<void()> Author::choiseTask()
 	std::cout << " -- Task II  - Delete column with maximal element in 2D matrix\n";
 	std::cout << " -- Task III - Check email adress status\n";
 	std::cout << " -- Task IV  - Operation with file (profile form)\n";
-	std::cout << "Print '1', '2', '3' or '4'> ";
-	x = CheckData<int>::getDigit(1, 4);
+	std::cout << " -- Press '5' to EXIT THE PROGRAM\n";
+	std::cout << "Print '1', '2', '3', '4' or '5'> ";
+	x = CheckData<int>::getDigit(1, 5);
 	switch (x) {
 	case 1:
 		return solveTask1;
@@ -30,10 +31,9 @@ std::function<void()> Author::choiseTask()
 		return solveTask3;
 	case 4:
 		return solveTask4;
-	default:
-		std::cout << "Invalid input\n";
+	case 5:
+		return exitFunc;
 	}
-	return std::function<void()>();
 }
 
 bool GeomMaster::areaChecker(double large, double small, Point& p) {
