@@ -37,7 +37,7 @@ std::function<bool()> Author::choiseTask()
 }
 
 bool GeomMaster::areaChecker(double large, double small, Point& p) {
-	bool pred1 = p.x * p.x + p.y * p.y <= large * large;
+	bool pred1 = pow(p.x, 2) + pow(p.y, 2) <= large * large;
 	bool pred2 = pow(p.x, 2) + pow(p.y - small, 2) > small * small;
 	bool pred3 = pow(p.x, 2) + pow(p.y + small, 2) > small * small;
 	if (pred1 && pred2 && pred3)

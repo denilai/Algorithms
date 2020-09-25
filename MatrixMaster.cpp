@@ -1,7 +1,7 @@
 #include "MatrixMaster.h"
 #include "CheckData.h"
 
-std::list<std::list<int>>& MatrixMaster::deleteColumn(Matrix& array, int d_col) {
+std::list<std::list<int>>& MatrixMaster::deleteColumn(const int d_col) {
 	//d_col - столбец, который следует удалить;
 
 	if (array.empty())
@@ -23,7 +23,9 @@ std::list<std::list<int>>& MatrixMaster::deleteColumn(Matrix& array, int d_col) 
 	}
 }
 
-void MatrixMaster::showArray(Matrix& array) {
+void MatrixMaster::showArray() {
+	if (array.empty())
+		std::cout << "Matrix is empty\n";
 	for (auto row : array) {
 		for (auto col : row) {
 			std::cout << col << " ";
@@ -33,7 +35,7 @@ void MatrixMaster::showArray(Matrix& array) {
 	std::cout << std::endl;
 }
 
-int MatrixMaster::findMaxElem(Matrix& array) {
+int MatrixMaster::findMaxElem() {
 	int max = *array.begin()->begin();
 	for (auto row : array)
 		for (auto col : row) {
@@ -43,14 +45,7 @@ int MatrixMaster::findMaxElem(Matrix& array) {
 	return max;
 }
 
-Matrix MatrixMaster::createMatrix() {
-	int n = 0, m = 0;
-	std::cout << "Get count of rows in the matrix > ";
-	n = CheckData<int>::getPosDigit();
-	std::cout << "Get count of columns in the matrix > ";
-	m = CheckData<int>::getPosDigit();
-	std::list<std::list<int>> array;
-
+MatrixMaster::MatrixMaster(const int n, const int m) {
 	for (int i = 0; i < n; i++) {
 		array.push_back(Line());
 		std::cout << "Get elem of " << i << " row > ";
@@ -59,10 +54,10 @@ Matrix MatrixMaster::createMatrix() {
 			array.back().push_back(x);
 		}
 	}
-	return array;
 }
 
-std::pair<int, int> MatrixMaster::findElem(Matrix& array, int find) {
+
+std::pair<int, int> MatrixMaster::findElem(const int find) {
 	int i = 0, j = 0;
 	for (auto& line : array) {
 		j = 0;

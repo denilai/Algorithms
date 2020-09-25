@@ -4,7 +4,6 @@
 #include "MyBase.h"
 
 
-
 bool solveTask1() {
 	double large = 0, small = 0, x = 0, y = 0;
 	bool answer = false;
@@ -35,14 +34,21 @@ bool solveTask1() {
 bool solveTask2() {
 	std::cout << "\n\tTASK #2\n";
 
-	Matrix array = MatrixMaster::createMatrix();
-	MatrixMaster::showArray(array);
-	int maxElem = MatrixMaster::findMaxElem(array);
-	std::pair<int, int> ans = MatrixMaster::findElem(array, maxElem);
+	int n = 0, m = 0;
+	std::cout << "Get count of rows in the matrix > ";
+	n = CheckData<int>::getPosDigit();
+	std::cout << "Get count of columns in the matrix > ";
+	m = CheckData<int>::getPosDigit();
+
+	MatrixMaster array(n, m);
+	int maxElem = array.findMaxElem();
+	std::cout << "\n--- Find maximum element = " << maxElem << " ---\n";
+	std::pair<int, int> ans = array.findElem(maxElem);
 	while (ans != std::make_pair(-1, -1)) {
-		MatrixMaster::deleteColumn(array, ans.second);
-		MatrixMaster::showArray(array);
-		ans = MatrixMaster::findElem(array, maxElem);
+		std::cout << "\n--- Delete " << ans.second << " column\n";
+		array.deleteColumn(ans.second);
+		array.showArray();
+		ans = array.findElem(maxElem);
 	}
 	return true;
 }
@@ -54,6 +60,7 @@ bool solveTask3() {
 	do {
 		std::cout << "\n\tTASK #3\n";
 		std::cout << "\nGet your email adress > ";
+		std::cout << " !! Domains in your email should not end with a dot !!\n";
 		std::cin >> emailName;
 		EmailAdress email(emailName);
 		if (email.getStatus() == "Invalid")

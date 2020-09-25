@@ -23,9 +23,6 @@ int main(){
 	do {
 		std::function<bool()> execTask = myself.choiseTask();
 		answer = execTask();
-		
-		//cout << "\nRepeat the program? (y/n) > ";
-		//answer = CheckData<void>::getYesNo();
 	} while (answer);
 
 
