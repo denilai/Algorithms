@@ -11,7 +11,7 @@ private:
 	Matrix array;
 public:
 	MatrixMaster(const int n, const int m);
-	std::list <std::list<int>>& deleteColumn(const int);
+	void deleteColumn(const int);
 	void showArray();
 	int findMaxElem();
 	std::pair<int, int> findElem(const int);

@@ -21,15 +21,15 @@ private:
 	
 	class FQDN {
 	public:
-		class DomainName {
+		class Domain {
 		public:
 			//int lvl;
 			std::string dName;
-			DomainName(const std::string);
+			Domain(const std::string);
 		};
-		std::stack<DomainName> domainStack;
+		std::stack<Domain> domainStack;
 		Status fdStatus = INVALID;
-		std::stack <DomainName> getStack();
+		std::stack <Domain> getStack();
 		Status checkStack();
 		FQDN();
 		FQDN(const std::string domainLine);

@@ -9,7 +9,7 @@ EmailAdress::EmailAdress(const std::string email) {
 void EmailAdress::setEmail(const std::string email) {
 	int countComAt = std::count_if(email.begin(), email.end(), [](char ch) {return (ch == '@'); });
 	int countDot = std::count_if(email.begin(), email.end(), [](char ch) {return (ch == '.'); });
-	if (countComAt > 1 || countDot ==0 || countComAt == 0) {
+	if (countComAt > 1 || countDot == 0 || countComAt == 0) {
 		this->emStatus = INVALID;
 		this->email = "Invalid adress";
 		this->fqdn = new FQDN();
@@ -24,7 +24,7 @@ void EmailAdress::setEmail(const std::string email) {
 }
 
 Status EmailAdress::FQDN::checkStack() {
-	std::stack<FQDN::DomainName> copy = this->getStack();
+	std::stack<FQDN::Domain> copy = this->getStack();
 	while (!copy.empty()) {
 		if (copy.top().dName == "")
 			return INVALID;
@@ -34,7 +34,7 @@ Status EmailAdress::FQDN::checkStack() {
 }
 
 
-std::stack<EmailAdress::FQDN::DomainName> EmailAdress::FQDN::getStack() {
+std::stack<EmailAdress::FQDN::Domain> EmailAdress::FQDN::getStack() {
 	return domainStack;
 }
 
@@ -49,7 +49,7 @@ std::string EmailAdress::getStatus() {
 
 void EmailAdress::showStack()
 {
-	std::stack<FQDN::DomainName> stack = fqdn->getStack();
+	std::stack<FQDN::Domain> stack = fqdn->getStack();
 	while (!stack.empty()) {
 		std::cout << stack.top().dName << std::endl;
 		stack.pop();
@@ -58,13 +58,13 @@ void EmailAdress::showStack()
 EmailAdress::FQDN::FQDN(std::string domainLine)
 {
 	int dot = domainLine.find('.');
-	while (dot != std::string::npos){
-		std::string lvlName = domainLine.substr(0,dot);
-		this->domainStack.push(DomainName(lvlName));
-		domainLine = domainLine.substr(dot+1);
+	while (dot != std::string::npos) {
+		std::string lvlName = domainLine.substr(0, dot);
+		this->domainStack.push(Domain(lvlName));
+		domainLine = domainLine.substr(dot + 1);
 		dot = domainLine.find('.');
 	}
 	this->domainStack.push(domainLine);
 }
 
-EmailAdress::FQDN::DomainName::DomainName(const std::string name) :dName(name) {}
+EmailAdress::FQDN::Domain::Domain(const std::string name) :dName(name) {}

@@ -1,15 +1,15 @@
 #include "MatrixMaster.h"
 #include "CheckData.h"
 
-std::list<std::list<int>>& MatrixMaster::deleteColumn(const int d_col) {
+void MatrixMaster::deleteColumn(const int d_col) {
 	//d_col - столбец, который следует удалить;
 
 	if (array.empty())
-		return array;
+		return;
 
 	// выход за границы массива
 	if (array.begin()->size() <= d_col)
-		return array;
+		return;
 
 
 	for (Matrix::iterator it_row = array.begin(); it_row != array.end(); it_row++) {
@@ -24,8 +24,11 @@ std::list<std::list<int>>& MatrixMaster::deleteColumn(const int d_col) {
 }
 
 void MatrixMaster::showArray() {
-	if (array.empty())
+	if (array.front().empty())
+	{
 		std::cout << "Matrix is empty\n";
+		return;
+	}
 	for (auto row : array) {
 		for (auto col : row) {
 			std::cout << col << " ";
