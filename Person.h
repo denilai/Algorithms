@@ -21,12 +21,8 @@ public:
 	enum class Gender {
 		MALE, FEMALE
 	};
-public:
 	Person(std::string, std::string, std::string, std::string);
-	std::string getINN();
-	std::string getFullName();
 	std::string getGender();
-	std::string getBirthdate();
 	std::string getField(PersonField);
 	void showPerson();
 };

@@ -4,13 +4,13 @@ bool CompData::compare(Person& f, Person& g) {
 	switch (field)
 	{
 	case PersonField::BIRTHDATE:
-		return f.getBirthdate() < g.getBirthdate();
+		return f.birthdate < g.birthdate;
 	case PersonField::FULL_NAME:
-		return f.getFullName()< g.getFullName();
+		return f.fullName< g.fullName;
 	case PersonField::GENDER:
-		return f.getGender()< g.getGender();
+		return f.gender< g.gender;
 	case PersonField::INN:
-		return f.getINN()< g.getINN();
+		return f.INN< g.INN;
 	default:
 		return false;
 	}
