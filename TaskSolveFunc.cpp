@@ -2,7 +2,7 @@
 #include "CheckData.h"
 #include "EmailMaster.h"
 #include "MyBase.h"
-
+#include <iostream>
 
 bool solveTask1() {
 	double large = 0, small = 0, x = 0, y = 0;
@@ -139,37 +139,31 @@ bool solveTask4() {
 				std::cout << "|| 1) Full Name || 2) Gender || 3) Birthdate || 4) INN ||\n> ";
 				findByField = CheckData<int>::getDigit(1, 4);
 				std::cout << "Enter the key (search request)\n> ";
-				std::cin >> key;
+				std::cin.ignore();
+				getline(std::cin, key);
 				std::cout << "Search has started...\n";
-				switch (findByField)
-				{
-				case 1:
-					found = myBase.findBy(PersonField::FULL_NAME, key);
-					for (auto& pers : found) {
-						pers.showPerson();
+				try {
+					switch (findByField)
+					{
+					case 1:
+						myBase.binaryFind(0, myBase.getCountOfPersons() - 1, PersonField::FULL_NAME, key).showPerson();
+						break;
+					case 2:
+						myBase.binaryFind(0, myBase.getCountOfPersons() - 1, PersonField::GENDER, key).showPerson();
+						break;
+					case 3:
+						myBase.binaryFind(0, myBase.getCountOfPersons() - 1, PersonField::BIRTHDATE, key).showPerson();
+						break;
+					case 4:
+						myBase.binaryFind(0, myBase.getCountOfPersons() - 1, PersonField::INN, key).showPerson();
+						break;
+					default:
+						std::cout << "Not a case\n";
+						break;
 					}
-					break;
-				case 2:
-					found = myBase.findBy(PersonField::GENDER, key);
-					for (auto& pers : found) {
-						pers.showPerson();
-					}
-					break;
-				case 3:
-					found = myBase.findBy(PersonField::BIRTHDATE, key);
-					for (auto& pers : found) {
-						pers.showPerson();
-					}
-					break;
-				case 4:
-					found = myBase.findBy(PersonField::INN, key);
-					for (auto& pers : found) {
-						pers.showPerson();
-					}
-					break;
-				default:
-					std::cout << "Not a case\n";
-					break;
+				}
+				catch (std::string a) {
+					std::cout << a;
 				}
 				std::cout << "Search is over\n";
 			case 4:

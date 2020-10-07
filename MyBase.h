@@ -25,6 +25,8 @@ public:
 	std::string getFileName();
 	void readFromFile();
 	void sortBy(PersonField, bool dir); // сортировка массива по одному из полей структуры
+	Person& binaryFind(int first, int last, PersonField field, std::string arg);
+	int getCountOfPersons();
 	void showData(); // вывод данных об объектах на экран
 	std::vector<Person> findBy(PersonField, std::string); // поиск объекта по значению одного из полей
 	void writeToBinFile();
