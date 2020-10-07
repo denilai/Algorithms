@@ -3,13 +3,13 @@
 bool CompData::compare(Person& f, Person& g) {
 	switch (field)
 	{
-	case PersonField::BIRTHDATE:
+	case Person::PersonField::BIRTHDATE:
 		return f.birthdate < g.birthdate;
-	case PersonField::FULL_NAME:
+	case Person::PersonField::FULL_NAME:
 		return f.fullName< g.fullName;
-	case PersonField::GENDER:
+	case Person::PersonField::GENDER:
 		return f.gender< g.gender;
-	case PersonField::INN:
+	case Person::PersonField::INN:
 		return f.INN< g.INN;
 	default:
 		return false;
@@ -25,7 +25,7 @@ void  CompData::setDirection(const std::string& dir) {
 	}
 }
 
-CompData::CompData(const PersonField field, const bool & dir):field(field) {
+CompData::CompData(const Person::PersonField field, const bool & dir):field(field) {
 	if (dir == false) {
 		this->direction = "decrease";
 	}

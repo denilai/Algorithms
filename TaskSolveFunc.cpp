@@ -115,16 +115,16 @@ bool solveTask4() {
 				switch (sortByField)
 				{
 				case 1:
-					myBase.sortBy(PersonField::FULL_NAME,direction);
+					myBase.sortBy(Person::PersonField::FULL_NAME,direction);
 					break;
 				case 2:
-					myBase.sortBy(PersonField::GENDER, direction);
+					myBase.sortBy(Person::PersonField::GENDER, direction);
 					break;
 				case 3:
-					myBase.sortBy(PersonField::BIRTHDATE, direction);
+					myBase.sortBy(Person::PersonField::BIRTHDATE, direction);
 					break;
 				case 4:
-					myBase.sortBy(PersonField::INN, direction);
+					myBase.sortBy(Person::PersonField::INN, direction);
 					break;
 				default:
 					std::cout << "Not a case\n";
@@ -146,16 +146,16 @@ bool solveTask4() {
 					switch (findByField)
 					{
 					case 1:
-						myBase.binaryFind(0, myBase.getCountOfPersons() - 1, PersonField::FULL_NAME, key).showPerson();
+						myBase.binarySearch(0, myBase.getCountOfPersons() - 1, Person::PersonField::FULL_NAME, key).showPerson();
 						break;
 					case 2:
-						myBase.binaryFind(0, myBase.getCountOfPersons() - 1, PersonField::GENDER, key).showPerson();
+						myBase.binarySearch(0, myBase.getCountOfPersons() - 1, Person::PersonField::GENDER, key).showPerson();
 						break;
 					case 3:
-						myBase.binaryFind(0, myBase.getCountOfPersons() - 1, PersonField::BIRTHDATE, key).showPerson();
+						myBase.binarySearch(0, myBase.getCountOfPersons() - 1, Person::PersonField::BIRTHDATE, key).showPerson();
 						break;
 					case 4:
-						myBase.binaryFind(0, myBase.getCountOfPersons() - 1, PersonField::INN, key).showPerson();
+						myBase.binarySearch(0, myBase.getCountOfPersons() - 1, Person::PersonField::INN, key).showPerson();
 						break;
 					default:
 						std::cout << "Not a case\n";

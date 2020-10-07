@@ -4,9 +4,7 @@
 #include <string>
 #include <iostream>
 
-enum class PersonField {
-	FULL_NAME, GENDER, BIRTHDATE, INN
-};
+
 
 struct Person
 {
@@ -17,6 +15,10 @@ public:
 	Gender gender;
 	std::string birthdate;
 	std::string INN;
+
+	enum class PersonField {
+		FULL_NAME, GENDER, BIRTHDATE, INN
+	};
 
 	enum class Gender {
 		MALE, FEMALE

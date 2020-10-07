@@ -6,12 +6,12 @@
 struct CompData {                             // функтор сравнения 
 private:
 	void setDirection(const std::string &dir);
-	PersonField field;
+	Person::PersonField field;
 	std::string direction = "increase";
 	bool compare(Person&, Person&);
 
 public:
-	CompData(const PersonField field, const bool & direction = true);
+	CompData(const Person::PersonField field, const bool & direction = true);
 	bool operator()(Person& f, Person& g) {
 		bool ret = compare(f, g);
 		return direction == "increase" ? ret : !ret;

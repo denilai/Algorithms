@@ -19,7 +19,7 @@ void MyBase::addPerson(std::string fullName, std::string gender, std::string bir
 	persons.push_back(a);
 }
 
-void MyBase::sortBy(PersonField field, bool dir = true) {
+void MyBase::sortBy(Person::PersonField field, bool dir = true) {
 	sort(persons.begin(), persons.end(), CompData(field, dir));
 }
 
@@ -31,7 +31,7 @@ void MyBase::showData() {
 	}
 }
 
-std::vector<Person>MyBase::findBy(PersonField field, std::string arg)
+std::vector<Person>MyBase::findBy(Person::PersonField field, std::string arg)
 {
 	sortBy(field);
 	std::vector <Person> found;
@@ -41,7 +41,7 @@ std::vector<Person>MyBase::findBy(PersonField field, std::string arg)
 	return found;
 }
 
-Person& MyBase::binaryFind(int left, int right , PersonField field, std::string arg) {
+Person& MyBase::binarySearch(int left, int right , Person::PersonField field, std::string arg) {
 	if (persons[left].getField(field) == arg)
 		return persons[left];
 	if (persons[right].getField(field) == arg)
@@ -53,8 +53,8 @@ Person& MyBase::binaryFind(int left, int right , PersonField field, std::string 
 		}
 		else
 			if (persons[mid].getField(field) > arg)
-				return binaryFind(left, mid - 1, field, arg);
-			else return binaryFind(mid + 1, right, field, arg);
+				return binarySearch(left, mid - 1, field, arg);
+			else return binarySearch(mid + 1, right, field, arg);
 	}
 	throw std::string("ERROR. Search failed\n");
 }
